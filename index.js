@@ -11,7 +11,7 @@ var count = 0;
 
 app.get('/', function(req, res, next) {
 	console.log(" GET REQUEST WORKING ");
-	res.send("fuck yes");
+	res.send("this the site");
 });
 
 app.post('/', function(req, res, next) {
