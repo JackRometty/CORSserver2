@@ -10,16 +10,21 @@ app.use(function(req, res, next) {
 var count = 0;
 
 app.get('/', function(req, res, next) {
-	console.log(" GET REQUEST WORKING ");
-	res.send("this the site");
+	console.log(" GET REQUEST ");
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	console.log(ip);
+	res.send("fuck yes");
 });
 
 app.post('/', function(req, res, next) {
-	console.log(" POST REQUEST WORKING ");
+	console.log(" POST REQUEST ");
 	count += 1;
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	console.log(ip);
+	console.log(req.get('origin'));
 	res.send(String(count));
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(8080, function () {
+  console.log('Example app listening on port 8080!')
 })
